@@ -9,6 +9,7 @@ import dev.hacksoar.modules.Module;
 import dev.hacksoar.modules.ModuleCategory;
 import dev.hacksoar.modules.impl.movement.speed.SpeedMode;
 import dev.hacksoar.modules.impl.movement.speed.impl.LegitMode;
+import dev.hacksoar.modules.impl.movement.speed.impl.VanillaMode;
 import dev.hacksoar.modules.impl.movement.speed.impl.WatchdogMode;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class Speed extends Module {
     @Override
     public void onInitialize() {
         modes.add(none);
+        modes.add(new VanillaMode());
         modes.add(new WatchdogMode());
         modes.add(new LegitMode());
 

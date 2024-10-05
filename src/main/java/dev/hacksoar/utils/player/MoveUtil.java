@@ -666,4 +666,9 @@ public class MoveUtil {
         HackSoar.mc.thePlayer.motionX += -MathHelper.sin((float) yaw) * increase;
         HackSoar.mc.thePlayer.motionZ += MathHelper.cos((float) yaw) * increase;
     }
+
+    public void stop(boolean stopY) {
+        if (stopY) HackSoar.mc.thePlayer.motionY *= 0;
+        HackSoar.mc.thePlayer.motionX = HackSoar.mc.thePlayer.motionZ *= 0;
+    }
 }
