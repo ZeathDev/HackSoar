@@ -1,5 +1,7 @@
 # HackSoar Client
 
+![HackSoar](https://socialify.git.ci/ZeathDev/HackSoar/image?description=1&font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
+
 ### A Minecraft 1.8.9 PvP(and hack) client😍
 
 # About Bypasses
