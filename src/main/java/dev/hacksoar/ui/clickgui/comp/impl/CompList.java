@@ -63,12 +63,12 @@ public class CompList extends Comp {
                 parent.isHitd = true;
             } else if (mouseButton == 1) {
                 int max = ((ListValue) setting).getValues().length;
-                if (parent.modeIndex + 1 >= max) {
-                    parent.modeIndex = 0;
+                if (parent.modeIndex - 1 < 0) {
+                    parent.modeIndex = max - 1;
                 } else {
-                    parent.modeIndex++;
+                    parent.modeIndex--;
                 }
-                setting.set((((ListValue) setting).getDefaultVal()));
+                setting.set((((ListValue) setting).getValues())[parent.modeIndex]);
                 parent.isHitd = true;
             }
         }
