@@ -12,10 +12,16 @@ public class VanillaMode extends SpeedMode {
     private final ListValue mode = new ListValue("Type", new String[]{"Hop", "Ground", "Blink"}, "Hop");
     private final BoolValue fastStop = new BoolValue("Fast Stop", true);
     private final BoolValue fastMode = new BoolValue("Fast Speed", false, () -> !mode.isMode("Blink"));
-    private final FloatValue fastModeStrength = new FloatValue("Fast Speed Strength", 1f, 1f, 10f, () -> fastMode.isDisplayable() && fastMode.get());
+    private final FloatValue fastModeStrength = new FloatValue("Fast Speed Strength", 1f, 1f, 5f, () -> fastMode.isDisplayable() && fastMode.get());
 
     public VanillaMode() {
         super("Vanilla");
+    }
+
+    @Override
+    public void onDisable() {
+        if (fastStop.get()) MoveUtil.stop(false);
+        super.onDisable();
     }
 
     @EventTarget
