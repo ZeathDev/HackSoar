@@ -26,14 +26,14 @@ public class VanillaMode extends SpeedMode {
                     if (mc.thePlayer.onGround) mc.thePlayer.motionY = 0.21;
 
                     if (!fastMode.get()) {
-                        MoveUtil.strafe(1.0245);
+                        MoveUtil.strafe(0.765);
                     } else {
                         MoveUtil.strafe(fastModeStrength.get());
                     }
                     break;
                 case "Ground":
                     if (!fastMode.get()) {
-                        MoveUtil.strafe(0.765);
+                        MoveUtil.strafe(0.635);
                     } else {
                         MoveUtil.strafe(fastModeStrength.get());
                     }
