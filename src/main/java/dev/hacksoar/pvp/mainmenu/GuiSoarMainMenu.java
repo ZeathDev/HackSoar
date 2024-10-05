@@ -26,11 +26,11 @@ import java.util.List;
 
 public class GuiSoarMainMenu extends GuiScreen{
 
-	private ArrayList<SoarMainMenuButton> menus = new ArrayList<SoarMainMenuButton>();
+	private final ArrayList<SoarMainMenuButton> menus = new ArrayList<SoarMainMenuButton>();
 	private Animation introAnimation;
 	private boolean closeIntro;
     
-    private List<ClickEffect> clickEffects = new ArrayList<>();
+    private final List<ClickEffect> clickEffects = new ArrayList<>();
     
     private CloseType closeType;
 
@@ -119,6 +119,7 @@ public class GuiSoarMainMenu extends GuiScreen{
 		super.drawScreen(mouseX, mouseY, partialTicks);
 
 		//Copyright
+		FontUtils.regular20.drawString("HackSoar developed by Zeath with ❤.", 4, sr.getScaledHeight() - FontUtils.regular_bold20.getHeight() - 3, font2Color.getRGB());
         FontUtils.regular20.drawString("Copyright Mojang AB. Do not distribute!", sr.getScaledWidth() - FontUtils.regular_bold20.getStringWidth("Copyright Mojang AB. Do not distribute!") + 4, sr.getScaledHeight() - FontUtils.regular_bold20.getHeight() - 3, font2Color.getRGB());
         
         if(clickEffects.size() > 0) {

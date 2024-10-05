@@ -25,19 +25,22 @@ import java.util.ArrayList;
 
 public class GuiCredit extends GuiScreen{
 
-	private ArrayList<Credit> credits = new ArrayList<Credit>();
+	private final ArrayList<Credit> credits = new ArrayList<Credit>();
 	
 	private Animation introAnimation;
 	
 	private boolean close;
 	
 	private double scrollY;
-	private SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
 	
 	public GuiCredit() {
+		credits.add(new Credit("TIMER_ERR", "Some of the designs were inspired by him", "https://github.com/TIMER-err", "S"));
+		credits.add(new Credit("EldoDebug", "Creator of Soar Client", "https://github.com/EldoDebug", "S"));
+		credits.add(new Credit("LikeSoar Team", "Creator of HackSoar's base (LikeSoar)", "https://github.com/GLASS20/LikeSoar", "S"));
 		credits.add(new Credit("SpongePowered", "Creator of bytecode weaving framework (Mixin)", "https://github.com/SpongePowered", "S"));
 		credits.add(new Credit("Sk1er LLC", "Some bug fixes and performance improvements", "https://github.com/Sk1erLLC", "S"));
-		credits.add(new Credit("TheKodeToad", "Motion blur on HackSoar and some code help", "https://github.com/TheKodeToad", "S"));
+		credits.add(new Credit("TheKodeToad", "Motion blur on Soar and some code help", "https://github.com/TheKodeToad", "S"));
 		credits.add(new Credit("Anshg_", "Minecraft client-side account authentication system", "https://github.com/AnshGulavani", "S"));
 		credits.add(new Credit("sp614x", "Creator of Optifine", "https://github.com/sp614x", "S"));
 		credits.add(new Credit("Lumien", "Creator of Chunk Animator", "https://github.com/lumien231", "S"));
@@ -136,6 +139,7 @@ public class GuiCredit extends GuiScreen{
 		GlUtils.stopScale();
 		
         //Copyright
+		FontUtils.regular20.drawString("HackSoar developed by Zeath with ❤.", 4, sr.getScaledHeight() - FontUtils.regular_bold20.getHeight() - 3, font2Color.getRGB());
         FontUtils.regular20.drawString("Copyright Mojang AB. Do not distribute!", sr.getScaledWidth() - FontUtils.regular_bold20.getStringWidth("Copyright Mojang AB. Do not distribute!") + 4, sr.getScaledHeight() - FontUtils.regular_bold20.getHeight() - 3, font2Color.getRGB());
         
         final MouseUtils.Scroll scroll = MouseUtils.scroll();

@@ -41,32 +41,32 @@ import java.util.*;
 
 public class GuiAccountManager extends GuiScreen{
 
-	private GuiScreen prevGuiScreen;
+	private final GuiScreen prevGuiScreen;
 	
 	private Animation showAccountAnimation;
 	private boolean closeAccountManager;
 	private boolean showAddAccount;
 	
-	private SimpleAnimation clickAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation clickAnimation = new SimpleAnimation(0.0F);
 	private boolean click;
-	private TimerUtils clickTimer = new TimerUtils();
+	private final TimerUtils clickTimer = new TimerUtils();
 	
     public ResourceLocation faceTexture;
     
-    private SimpleAnimation showAddAccountAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation showAddAccountAnimation = new SimpleAnimation(0.0F);
     
     private boolean delete;
     private Account deleteAccount;
     
     private double scrollY;
-    private SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
     
-    private SimpleAnimation addOpacityAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation addOpacityAnimation = new SimpleAnimation(0.0F);
     
     private GuiTransparentField usernameField;
-    private SimpleAnimation selectAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation selectAnimation = new SimpleAnimation(0.0F);
     
-    private List<ClickEffect> clickEffects = new ArrayList<>();
+    private final List<ClickEffect> clickEffects = new ArrayList<>();
     
     public GuiAccountManager(GuiScreen prevGuiScreen) {
     	this.prevGuiScreen = prevGuiScreen;
@@ -301,6 +301,7 @@ public class GuiAccountManager extends GuiScreen{
         }
         
         //Copyright
+		FontUtils.regular20.drawString("HackSoar developed by Zeath with ❤.", 4, sr.getScaledHeight() - FontUtils.regular_bold20.getHeight() - 3, font2Color.getRGB());
         FontUtils.regular20.drawString("Copyright Mojang AB. Do not distribute!", sr.getScaledWidth() - FontUtils.regular_bold20.getStringWidth("Copyright Mojang AB. Do not distribute!") + 4, sr.getScaledHeight() - FontUtils.regular_bold20.getHeight() - 3, font2Color.getRGB());
         
         if(clickEffects.size() > 0) {
