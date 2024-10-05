@@ -310,8 +310,9 @@ public class KillAura extends Module {
             }
         }
 
-        if ((!grimFalse.get() || !(mc.thePlayer.ticksSprint <= 1 && mc.thePlayer.isSprinting())) && !BadPacketsComponent.bad(false, true, true, false, true) && target != null && (clickStopWatch.finished((long) (delay * 50)) || flag)) {
-            this.nextSwing = (long) (1000 / MathUtils.getRandom(getMinCps(), getMaxCps()));
+        if (attackStopWatch.finished(this.nextSwing) && (!grimFalse.get() || !(mc.thePlayer.ticksSprint <= 1 && mc.thePlayer.isSprinting())) && !BadPacketsComponent.bad(false, true, true, false, true) && target != null && (clickStopWatch.finished((long) (delay * 50)) || flag)) {
+            final long clicks = (long) (Math.round(MathUtils.getRandom(getMinCps(), getMaxCps())) * 1.5);
+            this.nextSwing = 1000 / clicks;
 
             if (Math.sin(nextSwing) + 1 > Math.random() || attackStopWatch.finished(this.nextSwing) || Math.random() > 0.5) {
                 this.allowAttack = true;
