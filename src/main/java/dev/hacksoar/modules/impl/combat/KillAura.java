@@ -15,17 +15,13 @@ import dev.hacksoar.modules.Module;
 import dev.hacksoar.modules.ModuleCategory;
 import dev.hacksoar.utils.MathUtils;
 import dev.hacksoar.utils.TimerUtils;
-import dev.hacksoar.utils.animation.Animation;
-import dev.hacksoar.utils.animation.Easing;
 import dev.hacksoar.utils.player.MovementFix;
 import dev.hacksoar.utils.player.RayCastUtil;
 import dev.hacksoar.utils.player.RotationUtil;
 import dev.hacksoar.utils.player.StopWatch;
 import dev.hacksoar.utils.render.RenderUtils;
 import dev.hacksoar.utils.vector.Vector2f;
-import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.*;
 import net.minecraft.network.Packet;
@@ -34,16 +30,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 @ModuleTag
 public class KillAura extends Module {
@@ -75,6 +64,7 @@ public class KillAura extends Module {
     private final BoolValue noSwing = new BoolValue("No swing", false, advanced::get);
     private final BoolValue autoDisable = new BoolValue("Auto disable", true, advanced::get);
     private final BoolValue grimFalse = new BoolValue("Prevent Grim false positives", false, advanced::get);
+    private final BoolValue targetMark = new BoolValue("Target Mark", true, advanced::get);
 
     private final BoolValue showTargets = new BoolValue("Targets", true);
     public final BoolValue player = new BoolValue("Player", true, showTargets::get);
@@ -253,7 +243,7 @@ public class KillAura extends Module {
     }
 
     private void doAttack(final List<Entity> targets) {
-        String autoBlock = this.autoBlock.get();
+        String autoBlock = KillAura.autoBlock.get();
         if (BadPacketsComponent.bad(false, true, true, true, true) &&
                 (autoBlock.equals("Fake") || autoBlock.equals("None") ||
                         autoBlock.equals("Imperfect Vanilla") || autoBlock.equals("Vanilla ReBlock") || autoBlock.equals("Block Hit"))) {
@@ -512,7 +502,7 @@ public class KillAura extends Module {
             case "Legit":
                 if (this.hitTicks == 1) {
                     mc.gameSettings.keyBindUseItem.setPressed(true);
-                    this.blocking = true;
+                    blocking = true;
                 }
                 break;
 
@@ -533,24 +523,24 @@ public class KillAura extends Module {
                 break;
 
             case "Vanilla ReBlock":
-                if (this.hitTicks == 1 || !this.blocking) {
+                if (this.hitTicks == 1 || !blocking) {
                     this.block(false, true);
                 }
                 break;
 
             case "Watchdog":
-                if (mc.thePlayer.ticksSincePlayerVelocity >= 5 + (Math.random() * 4) && mc.thePlayer.ticksSincePlayerVelocity <= 20 && !this.blocking) {
+                if (mc.thePlayer.ticksSincePlayerVelocity >= 5 + (Math.random() * 4) && mc.thePlayer.ticksSincePlayerVelocity <= 20 && !blocking) {
                     this.block(true, true);
                 }
 
-                if (mc.thePlayer.ticksSincePlayerVelocity >= 16 + (Math.random() * 4) && this.blocking) {
+                if (mc.thePlayer.ticksSincePlayerVelocity >= 16 + (Math.random() * 4) && blocking) {
                     this.unblock(true);
                 }
                 break;
 
             case "Watchdog HvH":
                 mc.gameSettings.keyBindUseItem.setPressed(true);
-                if ((this.hitTicks == 1 || !this.blocking) && !BadPacketsComponent.bad(false, true, true, true, false)) {
+                if ((this.hitTicks == 1 || !blocking) && !BadPacketsComponent.bad(false, true, true, true, false)) {
                     this.block(false, true);
                 }
                 break;
@@ -575,10 +565,10 @@ public class KillAura extends Module {
                 break;
 
             case "New NCP":
-                if (this.blocking) {
+                if (blocking) {
                     mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(this.getItemIndex() % 8 + 1));
                     mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(this.getItemIndex()));
-                    this.blocking = false;
+                    blocking = false;
                 }
                 break;
 
@@ -633,6 +623,13 @@ public class KillAura extends Module {
             }
 
             this.doAttack(targets);
+        }
+    }
+
+    @EventTarget
+    public void onRender3D(EventRender3D event) {
+        if (targetMark.get() && target != null) {
+            RenderUtils.drawTargetCapsule(target, 0.67, true);
         }
     }
 

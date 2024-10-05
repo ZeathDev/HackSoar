@@ -1,6 +1,5 @@
 package dev.hacksoar.modules.impl.movement.speed.impl;
 
-import dev.hacksoar.HackSoar;
 import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.EventUpdate;
 import dev.hacksoar.api.value.impl.BoolValue;
@@ -27,22 +26,14 @@ public class VanillaMode extends SpeedMode {
                     if (mc.thePlayer.onGround) mc.thePlayer.motionY = 0.21;
 
                     if (!fastMode.get()) {
-                        if (HackSoar.instance.targetManager.getTargets(6.0).isEmpty()) {
-                            MoveUtil.strafe(0.6);
-                        } else {
-                            MoveUtil.strafe(0.33);
-                        }
+                        MoveUtil.strafe(1.0245);
                     } else {
                         MoveUtil.strafe(fastModeStrength.get());
                     }
                     break;
                 case "Ground":
                     if (!fastMode.get()) {
-                        if (HackSoar.instance.targetManager.getTargets(6.0).isEmpty()) {
-                            MoveUtil.strafe(0.6);
-                        } else {
-                            MoveUtil.strafe(0.33);
-                        }
+                        MoveUtil.strafe(0.765);
                     } else {
                         MoveUtil.strafe(fastModeStrength.get());
                     }
