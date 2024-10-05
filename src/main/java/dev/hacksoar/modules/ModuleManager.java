@@ -51,6 +51,7 @@ public class ModuleManager {
         moduleList.add(new FastUse());
         moduleList.add(new MemoryFix());
         moduleList.add(new StrafeFix());
+        moduleList.add(new WTap());
 
         // Render
         moduleList.add(new Chams());
