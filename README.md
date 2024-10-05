@@ -4,7 +4,7 @@
 
 # About Bypasses
 
-### From many other client:
+### From many other clients:
 
 Rise, Tenacity, Liquidbounce......
 
