@@ -2,10 +2,7 @@ package dev.hacksoar.modules;
 
 import dev.hacksoar.HackSoar;
 import dev.hacksoar.modules.impl.combat.*;
-import dev.hacksoar.modules.impl.movement.NoSlow;
-import dev.hacksoar.modules.impl.movement.SafeWalk;
-import dev.hacksoar.modules.impl.movement.Speed;
-import dev.hacksoar.modules.impl.movement.StrafeFix;
+import dev.hacksoar.modules.impl.movement.*;
 import dev.hacksoar.modules.impl.render.*;
 import dev.hacksoar.modules.impl.utilty.*;
 import dev.hacksoar.utils.Logger;
@@ -52,6 +49,7 @@ public class ModuleManager {
         moduleList.add(new MemoryFix());
         moduleList.add(new StrafeFix());
         moduleList.add(new WTap());
+        moduleList.add(new Boost());
 
         // Render
         moduleList.add(new Chams());
