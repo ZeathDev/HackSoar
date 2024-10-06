@@ -16,6 +16,7 @@ import net.minecraft.network.play.client.C03PacketPlayer;
 @ModuleTag
 public class Criticals extends Module {
     private final ListValue mode = new ListValue("Mode", new String[]{"Packet", "Edit", "DCJ Network", "Hop"}, "Packet");
+    private final ListValue dcjMode = new ListValue("DCJ Network Mode", new String[]{"Smart Hop", "TP Hop"}, "Smart Hop", () -> mode.isMode("DCJ Network"));
 
     private boolean attacked = false;
 
@@ -45,13 +46,51 @@ public class Criticals extends Module {
                 attacked = true;
                 break;
             case "dcj network":
-                if (mc.thePlayer.getDistanceToEntity(event.getEntity()) > 6.0) {
-                    mc.thePlayer.setPosition(x, y + 0.3, z);
-                } else {
-                    if (hurttime < 4) {
-                        mc.thePlayer.motionY = 0.21;
-                        mc.thePlayer.fallDistance = 0.21f;
-                    }
+                switch (dcjMode.get()) {
+                    case "Smart Hop":
+                        if (mc.thePlayer.getDistanceToEntity(event.getEntity()) > 6.0) {
+                            mc.thePlayer.setPosition(x, y + 0.3, z);
+                        } else {
+                            if (hurttime < 4) {
+                                mc.thePlayer.motionY = 0.21;
+                                mc.thePlayer.fallDistance = 0.21f;
+                            }
+                        }
+                        break;
+                    case "TP Hop":
+                        if (mc.thePlayer.hurtTime != 0) {
+                            if (MathUtils.isInRange(mc.thePlayer.hurtTime, 9, 10)) {
+                                if (mc.thePlayer.onGround) {
+                                    mc.thePlayer.setPosition(
+                                            mc.thePlayer.posX,
+                                            mc.thePlayer.posY + 0.514,
+                                            mc.thePlayer.posZ
+                                    );
+                                }
+                            } else if (MathUtils.isInRange(mc.thePlayer.hurtTime, 7, 8)) {
+                                if (mc.thePlayer.getFoodStats().getFoodLevel() < 15) {
+                                    mc.thePlayer.motionY = -0.783;
+                                } else {
+                                    mc.thePlayer.motionY = -0.424;
+                                }
+                            }
+                            if (MathUtils.isInRange(mc.thePlayer.hurtTime, 5, 6)) {
+                                if (mc.thePlayer.onGround) {
+                                    mc.thePlayer.setPosition(
+                                            mc.thePlayer.posX,
+                                            mc.thePlayer.posY + 0.514,
+                                            mc.thePlayer.posZ
+                                    );
+                                }
+                            } else if (MathUtils.isInRange(mc.thePlayer.hurtTime, 3, 4)) {
+                                if (mc.thePlayer.getFoodStats().getFoodLevel() < 15) {
+                                    mc.thePlayer.motionY = -0.783;
+                                } else {
+                                    mc.thePlayer.motionY = -0.424;
+                                }
+                            }
+                        }
+                        break;
                 }
                 break;
             case "hop":

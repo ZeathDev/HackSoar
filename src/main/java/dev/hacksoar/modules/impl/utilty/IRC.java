@@ -34,7 +34,7 @@ import static dev.hacksoar.utils.irc.ServerUtils.getTime;
 @ModuleTag
 public class IRC extends Module {
     public IRC() {
-        super("IRC","Realtime Chat", ModuleCategory.Util,true);
+        super("IRC", "Realtime Chat", ModuleCategory.Util);
     }
 
     public static ArrayList<String> sendMessages = new ArrayList<>();
