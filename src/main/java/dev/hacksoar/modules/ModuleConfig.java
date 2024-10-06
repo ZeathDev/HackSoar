@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Objects;
 
 public class ModuleConfig {
-    private ArrayList<File> configs = new ArrayList<File>();
+    private final ArrayList<File> configs = new ArrayList<File>();
 
     private int prevConfigs;
     private double scrollY;
@@ -24,17 +24,17 @@ public class ModuleConfig {
     }
 
     public void loadConfigs() {
-        if(prevConfigs != Objects.requireNonNull(HackSoar.instance.fileManager.getNConfigDir().listFiles()).length) {
+        if (prevConfigs != Objects.requireNonNull(HackSoar.instance.fileManager.getHConfigDir().listFiles()).length) {
 
-            prevConfigs = Objects.requireNonNull(HackSoar.instance.fileManager.getNConfigDir().listFiles()).length;
+            prevConfigs = Objects.requireNonNull(HackSoar.instance.fileManager.getHConfigDir().listFiles()).length;
 
             configs.clear();
 
             scrollY = 0;
 
-            FilenameFilter filter = (file, str) -> str.endsWith("nekocat");
+            FilenameFilter filter = (file, str) -> str.endsWith("cfg");
 
-            File[] fileArray = HackSoar.instance.fileManager.getNConfigDir().listFiles(filter);
+            File[] fileArray = HackSoar.instance.fileManager.getHConfigDir().listFiles(filter);
 
             if (fileArray != null) {
                 Collections.addAll(configs, fileArray);
@@ -131,11 +131,11 @@ public class ModuleConfig {
     }
 
     public void save() {
-        this.save(HackSoar.instance.fileManager.getNConfigFile());
+        this.save(HackSoar.instance.fileManager.getHConfigFile());
     }
 
     public void load() {
-        this.load(HackSoar.instance.fileManager.getNConfigFile());
+        this.load(HackSoar.instance.fileManager.getHConfigFile());
     }
 
     public ArrayList<File> getConfigs() {

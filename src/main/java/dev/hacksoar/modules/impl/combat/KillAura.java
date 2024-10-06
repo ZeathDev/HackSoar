@@ -61,6 +61,7 @@ public class KillAura extends Module {
     private final BoolValue subTicks = new BoolValue("Attack outside ticks", false, advanced::get);
     private final ListValue rotationMode = new ListValue("Rotation Mode", new String[]{"Legit/Normal", "Autistic AntiCheat"}, "Legit/Normal", advanced::get);
     private final BoolValue attackWhilstScaffolding = new BoolValue("Attack whilst Scaffolding", false, advanced::get);
+    private final BoolValue attackWhilstDisplayingGuis = new BoolValue("Attack whilst displaying Guis", false, advanced::get);
     private final BoolValue noSwing = new BoolValue("No swing", false, advanced::get);
     private final BoolValue autoDisable = new BoolValue("Auto disable", true, advanced::get);
     private final BoolValue grimFalse = new BoolValue("Prevent Grim false positives", false, advanced::get);
@@ -94,7 +95,7 @@ public class KillAura extends Module {
     public void onPreMotion(EventPreMotion eventMotion) {
         this.hitTicks++;
 
-        if (mc.currentScreen != null) {
+        if (attackWhilstDisplayingGuis.get() && mc.currentScreen != null) {
             return;
         }
 

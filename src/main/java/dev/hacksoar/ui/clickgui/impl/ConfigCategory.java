@@ -17,7 +17,7 @@ import java.io.File;
 public class ConfigCategory extends Category {
 
 	private GuiTransparentField configNameField;
-    private SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
     private boolean canToggle;
     
     private File removeFile;
@@ -50,7 +50,7 @@ public class ConfigCategory extends Category {
     		int maxLength = (configName.length() < MAX_CHAR) ? configName.length() : MAX_CHAR;
     		configName = configName.substring(0, maxLength).replace(".txt", "");
 			
-    		RoundedUtils.drawRound((float) this.getX() + 95, (float) (this.getY() + offsetY + scrollAnimation.getValue()), 200, 26, 8, ColorUtils.getBackgroundColor(4));
+    		RoundedUtils.drawRound(this.getX() + 95, this.getY() + offsetY + scrollAnimation.getValue(), 200, 26, 8, ColorUtils.getBackgroundColor(4));
     		FontUtils.regular20.drawString(configName, this.getX() + 105, this.getY() + offsetY + 11 + scrollAnimation.getValue(), ColorUtils.getFontColor(2).getRGB());
 
             FontUtils.icon20.drawString("M", this.getX() + 275, this.getY() + offsetY + 11, new Color(255, 20, 20).getRGB());
@@ -58,8 +58,8 @@ public class ConfigCategory extends Category {
     	}
     	
 		//Under bar
-    	RoundedUtils.drawRound((float) this.getX() + 80, (float) this.getY() + 200, 225, 30 + 0.5F, 6, ColorUtils.getBackgroundColor(1));
-    	RoundedUtils.drawRound((float) this.getX() + 80, (float) this.getY() + 200, 228, 30F, 0, ColorUtils.getBackgroundColor(1));
+    	RoundedUtils.drawRound(this.getX() + 80, this.getY() + 200, 225, 30 + 0.5F, 6, ColorUtils.getBackgroundColor(1));
+    	RoundedUtils.drawRound(this.getX() + 80, this.getY() + 200, 228, 30F, 0, ColorUtils.getBackgroundColor(1));
 
     	//Search bar
     	RoundedUtils.drawRound(this.getX() + 95, this.getY() + 205, 135, 21, 6, ColorUtils.getBackgroundColor(4));
@@ -98,12 +98,8 @@ public class ConfigCategory extends Category {
         }
         
         scrollAnimation.setAnimation((float) HackSoar.instance.moduleConfig.getScrollY(), 16);
-        
-    	if(MouseUtils.isInside(mouseX, mouseY, this.getX() + 80, this.getY(), 220, 199)) {
-    		canToggle = true;
-    	}else {
-    		canToggle = false;
-    	}
+
+        canToggle = MouseUtils.isInside(mouseX, mouseY, this.getX() + 80, this.getY(), 220, 199);
     	
     	if(!removed && removeFile != null) {
     		removed = true;
@@ -121,7 +117,7 @@ public class ConfigCategory extends Category {
 		
     	for(File f : HackSoar.instance.moduleConfig.getConfigs()) {
     		
-    		if(MouseUtils.isInside(mouseX, mouseY, (float) this.getX() + 95, (float) (this.getY() + offsetY + scrollAnimation.getValue()), 165, 26) && mouseButton == 0 && canToggle) {
+    		if(MouseUtils.isInside(mouseX, mouseY, this.getX() + 95, this.getY() + offsetY + scrollAnimation.getValue(), 165, 26) && mouseButton == 0 && canToggle) {
     			
         		for(Module m : HackSoar.instance.moduleManager.getModules()) {
         			m.setToggled(false);
@@ -130,7 +126,7 @@ public class ConfigCategory extends Category {
     			HackSoar.instance.moduleConfig.load(f);
     			ClientUtils.showNotification("Config", "Config has been successfully loaded!");
     		}
-    		if(MouseUtils.isInside(mouseX, mouseY, (float) this.getX() + 260, (float) (this.getY() + offsetY + scrollAnimation.getValue()), 35, 26) && mouseButton == 0) {
+    		if(MouseUtils.isInside(mouseX, mouseY, this.getX() + 260, this.getY() + offsetY + scrollAnimation.getValue(), 35, 26) && mouseButton == 0) {
     			removed = false;
     			removeFile = f;
     		}
@@ -140,8 +136,8 @@ public class ConfigCategory extends Category {
 		if(MouseUtils.isInside(mouseX, mouseY, this.getX() + 235, this.getY() + 205, 60, 21) && mouseButton == 0) {
 			
 			String configName = configNameField.getText();
-			
-			HackSoar.instance.moduleConfig.save(new File(HackSoar.instance.fileManager.getNConfigDir(), configName + ".nekocat"));
+
+			HackSoar.instance.moduleConfig.save(new File(HackSoar.instance.fileManager.getHConfigDir(), configName + ".cfg"));
 			
 			configNameField.setText("");
 		}

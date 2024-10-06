@@ -9,7 +9,7 @@ import java.io.File;
 
 public class FileManager {
 
-	private Minecraft mc = Minecraft.getMinecraft();
+	private final Minecraft mc = Minecraft.getMinecraft();
 	
 	// Directory
 	private final File soarDir;
@@ -23,13 +23,13 @@ public class FileManager {
 	private final File versionFile;
 	private final File accountFile;
 
-	// NekoCat
+	// HackSoar
 	@Getter
-	private final File nekocatDir;
+	private final File hackSoarDir;
 	@Getter
-	private final File nConfigDir;
+	private final File hConfigDir;
 	@Getter
-	private final File nConfigFile;
+	private final File hConfigFile;
 
 	public FileManager() {
 		
@@ -44,9 +44,9 @@ public class FileManager {
 		versionFile = new File(tempDir, HackSoar.instance.getVersion() + ".ver");
 
 		// NekoCat
-		nekocatDir = new File(mc.mcDataDir,"HackSoar");
-		nConfigDir = new File(nekocatDir,"Configs");
-		nConfigFile = new File(nConfigDir,"DefaultLocal.nekocat");
+		hackSoarDir = new File(mc.mcDataDir, "HackSoar");
+		hConfigDir = new File(hackSoarDir, "Configs");
+		hConfigFile = new File(hConfigDir, "DefaultLocal.cfg");
 
 		FileUtils.createDir(soarDir);
 		FileUtils.createDir(tempDir);
@@ -58,9 +58,9 @@ public class FileManager {
 		FileUtils.createFile(accountFile);
 		FileUtils.createFile(versionFile);
 
-		FileUtils.createDir(nekocatDir);
-		FileUtils.createDir(nConfigDir);
-		FileUtils.createFile(nConfigFile);
+		FileUtils.createDir(hackSoarDir);
+		FileUtils.createDir(hConfigDir);
+		FileUtils.createFile(hConfigFile);
 	}
 
 	public File getSoarDir() {

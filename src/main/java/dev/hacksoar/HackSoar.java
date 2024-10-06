@@ -140,7 +140,7 @@ public class HackSoar {
 		moduleManager.registerModules();
 
 		// First load file
-		moduleConfig.load(fileManager.getNConfigFile());
+		moduleConfig.load(fileManager.getHConfigFile());
 
 		// Second register modules event
 		moduleManager.EventRegister();
@@ -159,7 +159,7 @@ public class HackSoar {
 			discordManager.update("Playing HackSoar Client v" + HackSoar.instance.getVersion(), "");
 		}
 
-		moduleConfig.save(fileManager.getNConfigFile());
+		moduleConfig.save(fileManager.getHConfigFile());
 	}
     
 	@EventTarget
