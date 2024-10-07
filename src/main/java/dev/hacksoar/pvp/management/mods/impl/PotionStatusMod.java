@@ -7,7 +7,7 @@ import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.pvp.GuiEditHUD;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.GlUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.render.RenderUtils;
 import net.minecraft.client.renderer.GlStateManager;
@@ -63,15 +63,15 @@ public class PotionStatusMod extends Mod {
             if(compact) {
             	
             	GlUtils.startScale((x + offsetX) - 20, (y + i2) - offsetY - 2, 18, 18, 0.75F);
-                RenderUtils.drawTexturedModalRect((x + offsetX) - 20, (y + i2) - offsetY - 2, 0 + potionIcon1 % 8 * 18, 198 + potionIcon1 / 8 * 18, 18, 18);
-                RenderUtils.drawTexturedModalRect((x + offsetX) - 20, (y + i2) - (offsetY - 20) - 2, 0 + potionIcon2 % 8 * 18, 198 + potionIcon1 / 8 * 18, 18, 18);
+                RenderUtils.drawTexturedModalRect((x + offsetX) - 20, (y + i2) - offsetY - 2, potionIcon1 % 8 * 18, 198 + potionIcon1 / 8 * 18, 18, 18);
+                RenderUtils.drawTexturedModalRect((x + offsetX) - 20, (y + i2) - (offsetY - 20) - 2, potionIcon2 % 8 * 18, 198 + potionIcon1 / 8 * 18, 18, 18);
                 GlUtils.stopScale();
                 
                 FontUtils.regular_bold20.drawString("Speed", x + offsetX - 2, (y + i2) - offsetY + 3F, this.getFontColor().getRGB());
                 FontUtils.regular_bold20.drawString("Regeneration", x + offsetX - 2, (y + i2) - (offsetY - 20) - 1.5F, this.getFontColor().getRGB());
             }else {
-            	RenderUtils.drawTexturedModalRect((x + offsetX) - 17, (y + i2) - offsetY + 2, 0 + potionIcon1 % 8 * 18, 198 + potionIcon1 / 8 * 18, 18, 18);
-            	RenderUtils.drawTexturedModalRect((x + offsetX) - 17, (y + i2) - (offsetY - 24) + 2, 0 + potionIcon2 % 8 * 18, 198 + potionIcon1 / 8 * 18, 18, 18);
+            	RenderUtils.drawTexturedModalRect((x + offsetX) - 17, (y + i2) - offsetY + 2, potionIcon1 % 8 * 18, 198 + potionIcon1 / 8 * 18, 18, 18);
+            	RenderUtils.drawTexturedModalRect((x + offsetX) - 17, (y + i2) - (offsetY - 24) + 2, potionIcon2 % 8 * 18, 198 + potionIcon1 / 8 * 18, 18, 18);
                 
                 FontUtils.regular_bold20.drawString("Speed", x + offsetX + 3, (y + i2) - offsetY + 2, this.getFontColor().getRGB());
                 FontUtils.regular_bold20.drawString("Regeneration", x + offsetX + 3, (y + i2) - (offsetY - 24) + 2, this.getFontColor().getRGB());
@@ -109,25 +109,25 @@ public class PotionStatusMod extends Mod {
 	                    
 	                    if(compact) {
 	                    	GlUtils.startScale((x + offsetX) - 20, (y + i2) - offsetY - 2F, 18, 18, 0.75F);
-		                    RenderUtils.drawTexturedModalRect((x + offsetX) - 20, (y + i2) - offsetY - 2, 0 + i1 % 8 * 18, 198 + i1 / 8 * 18, 18, 18);
+		                    RenderUtils.drawTexturedModalRect((x + offsetX) - 20, (y + i2) - offsetY - 2, i1 % 8 * 18, 198 + i1 / 8 * 18, 18, 18);
 	                    	GlUtils.stopScale();
 	                    }else {
-	                    	RenderUtils.drawTexturedModalRect((x + offsetX) - 17, (y + i2) - offsetY + 2, 0 + i1 % 8 * 18, 198 + i1 / 8 * 18, 18, 18);
+	                    	RenderUtils.drawTexturedModalRect((x + offsetX) - 17, (y + i2) - offsetY + 2, i1 % 8 * 18, 198 + i1 / 8 * 18, 18, 18);
 	                    }
 	                }
 	                
-	                String s1 = I18n.format(potion.getName(), new Object[0]);
+	                String s1 = I18n.format(potion.getName());
 	                if (potioneffect.getAmplifier() == 1)
 	                {
-	                    s1 = s1 + " " + I18n.format("enchantment.level.2", new Object[0]);
+	                    s1 = s1 + " " + I18n.format("enchantment.level.2");
 	                }
 	                else if (potioneffect.getAmplifier() == 2)
 	                {
-	                    s1 = s1 + " " + I18n.format("enchantment.level.3", new Object[0]);
+	                    s1 = s1 + " " + I18n.format("enchantment.level.3");
 	                }
 	                else if (potioneffect.getAmplifier() == 3)
 	                {
-	                    s1 = s1 + " " + I18n.format("enchantment.level.4", new Object[0]);
+	                    s1 = s1 + " " + I18n.format("enchantment.level.4");
 	                }
 	                
 	                String s = Potion.getDurationString(potioneffect);
@@ -148,7 +148,7 @@ public class PotionStatusMod extends Mod {
 	        }
 		}
 		
-		this.setWidth((int) (FontUtils.regular_bold20.getStringWidth("Regeneration") + 29));
+		this.setWidth(FontUtils.regular_bold20.getStringWidth("Regeneration") + 29);
 		this.setHeight((compact ? 16 : 24 * 2) + 2);
 	}
 	

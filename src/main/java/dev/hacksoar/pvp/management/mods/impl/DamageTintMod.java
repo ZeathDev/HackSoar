@@ -5,8 +5,8 @@ import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.EventRenderDamageTint;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.PlayerUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
+import dev.hacksoar.utils.player.PlayerUtils;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 public class DamageTintMod extends Mod {
 
     private final ResourceLocation shape = new ResourceLocation("soar/mods/tint/shape.png");
-    private SimpleAnimation animation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation animation = new SimpleAnimation(0.0F);
     
 	public DamageTintMod() {
 		super("DamageTint", "Screen turns red when health decreases", ModCategory.RENDER);

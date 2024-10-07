@@ -1,11 +1,12 @@
-package dev.hacksoar.utils.player;
+package dev.hacksoar.utils.timer;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class StopWatch {
     private long millis;
-
-    public void setMillis(long millis) {
-        this.millis = millis;
-    }
 
 
     public StopWatch() {
@@ -18,10 +19,6 @@ public class StopWatch {
 
     public void reset() {
         this.millis = System.currentTimeMillis();
-    }
-
-    public long getMillis() {
-        return this.millis;
     }
 
     public long getElapsedTime() {

@@ -1,7 +1,6 @@
 package dev.hacksoar.pvp.screenshot;
 
 import dev.hacksoar.HackSoar;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.normal.Animation;
 import dev.hacksoar.utils.animation.normal.Direction;
 import dev.hacksoar.utils.animation.normal.impl.EaseBackIn;
@@ -9,6 +8,7 @@ import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
 import net.minecraft.client.gui.GuiScreen;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class GuiScreenshotViewer extends GuiScreen{
 
-	private ArrayList<String> screenshots = new ArrayList<String>();
+	private final ArrayList<String> screenshots = new ArrayList<String>();
 	
 	private File screenshotDir;
 	
@@ -42,7 +42,7 @@ public class GuiScreenshotViewer extends GuiScreen{
 	private int selected = 0;
 
 	private float translate = 0;
-	private SimpleAnimation changeAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation changeAnimation = new SimpleAnimation(0.0F);
 	
 	@Override
 	public void initGui() {
@@ -193,15 +193,11 @@ public class GuiScreenshotViewer extends GuiScreen{
 			
 			FilenameFilter filter = new FilenameFilter() {
 				public boolean accept(File file, String str){
-					if (str.endsWith("png")){
-						return true;
-					}else{
-						return false;
-					}
+                    return str.endsWith("png");
 				}
 			};
 			
-			File fileArray[] = screenshotDir.listFiles(filter);
+			File[] fileArray = screenshotDir.listFiles(filter);
 			
 			for(File f : fileArray) {
 				screenshots.add(f.getName());

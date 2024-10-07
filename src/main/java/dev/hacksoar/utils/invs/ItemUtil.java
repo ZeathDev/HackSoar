@@ -1,6 +1,6 @@
 package dev.hacksoar.utils.invs;
 
-import dev.hacksoar.utils.PlayerUtils;
+import dev.hacksoar.utils.player.PlayerUtils;
 import lombok.experimental.UtilityClass;
 import net.minecraft.block.*;
 import net.minecraft.init.Blocks;

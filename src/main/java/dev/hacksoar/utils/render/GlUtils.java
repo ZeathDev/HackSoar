@@ -1,4 +1,4 @@
-package dev.hacksoar.utils;
+package dev.hacksoar.utils.render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 public class GlUtils {
 	
-	private static Minecraft mc = Minecraft.getMinecraft();
+	private static final Minecraft mc = Minecraft.getMinecraft();
 
     public static void scissor(float x, float y, float width, float height) {
         final int scaleFactor = getScaleFactor();

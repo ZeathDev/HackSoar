@@ -1,6 +1,7 @@
 package dev.hacksoar.utils;
 
 import dev.hacksoar.utils.server.ServerUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,8 +10,8 @@ import net.minecraft.entity.player.EntityPlayer;
 public class TargetUtils {
 
 	private static Entity target;
-	private static Minecraft mc = Minecraft.getMinecraft();
-	private static TimerUtils timer = new TimerUtils();
+	private static final Minecraft mc = Minecraft.getMinecraft();
+	private static final TimerUtils timer = new TimerUtils();
 	
 	public static void onUpdate() {
 		if(mc.objectMouseOver != null && mc.objectMouseOver.entityHit != null) {

@@ -4,11 +4,11 @@ import dev.hacksoar.HackSoar;
 import dev.hacksoar.pvp.clickgui.category.Category;
 import dev.hacksoar.pvp.management.colors.AccentColor;
 import dev.hacksoar.pvp.management.mods.impl.ClientMod;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 
 import java.awt.*;
@@ -16,9 +16,9 @@ import java.awt.*;
 public class SettingsCategory extends Category {
 
 	private double scrollX;
-	private SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
-	private SimpleAnimation themeAnimation1 = new SimpleAnimation(0.0F);
-	private SimpleAnimation themeAnimation2 = new SimpleAnimation(0.0F);
+	private final SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation themeAnimation1 = new SimpleAnimation(0.0F);
+	private final SimpleAnimation themeAnimation2 = new SimpleAnimation(0.0F);
 	private boolean canToggle;
 	
 	public SettingsCategory() {
@@ -110,12 +110,8 @@ public class SettingsCategory extends Category {
         }
         
         scrollAnimation.setAnimation((float) scrollX, 16);
-        
-        if(MouseUtils.isInside(mouseX, mouseY, this.getX() + 95, this.getY() + 155, 200, 52)) {
-        	canToggle = true;
-        }else {
-        	canToggle = false;
-        }
+
+        canToggle = MouseUtils.isInside(mouseX, mouseY, this.getX() + 95, this.getY() + 155, 200, 52);
 	}
 	
 	@Override

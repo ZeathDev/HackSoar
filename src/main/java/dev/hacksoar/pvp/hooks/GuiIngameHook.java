@@ -8,9 +8,9 @@ import dev.hacksoar.pvp.GuiEditHUD;
 import dev.hacksoar.pvp.management.mods.impl.HUDMod;
 import dev.hacksoar.pvp.management.mods.impl.MenuBlurMod;
 import dev.hacksoar.ui.notification.NotificationManager;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
 import dev.hacksoar.utils.shader.BlurUtils;
@@ -26,7 +26,7 @@ import static dev.hacksoar.HackSoar.mc;
 public class GuiIngameHook {
 
 	private static Framebuffer shadowFramebuffer = new Framebuffer(1, 1, false);
-	private static SimpleAnimation opacityAnimation = new SimpleAnimation(0.0F);
+	private static final SimpleAnimation opacityAnimation = new SimpleAnimation(0.0F);
 	
 	public static void renderGameOverlay(float partialTicks) {
 		

@@ -1,7 +1,7 @@
 package dev.hacksoar.pvp.management.account;
 
-import dev.hacksoar.utils.TimerUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
+import dev.hacksoar.utils.timer.TimerUtils;
 
 public class Account {
 
@@ -11,7 +11,7 @@ public class Account {
 	
 	private String info;
 	
-	private TimerUtils timer;
+	private final TimerUtils timer;
 	
 	public SimpleAnimation opacityAnimation = new SimpleAnimation(0.0F);
 	public boolean isDone;

@@ -1,8 +1,7 @@
-package dev.hacksoar.utils;
+package dev.hacksoar.utils.player;
 
 import com.google.common.collect.Multimap;
 import dev.hacksoar.HackSoar;
-import dev.hacksoar.utils.player.EnumFacingOffset;
 import lombok.experimental.UtilityClass;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
@@ -340,7 +339,7 @@ public class PlayerUtils {
         return getPlacePossibility(0, 0, 0);
     }
 
-	private static Minecraft mc = Minecraft.getMinecraft();
+	private static final Minecraft mc = Minecraft.getMinecraft();
 	
     public static final Map<Integer, Float> MODIFIER_BY_TICK = new HashMap<>();
     
@@ -456,7 +455,7 @@ public class PlayerUtils {
             mc.thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[" + EnumChatFormatting.WHITE + HackSoar.instance.getName() + EnumChatFormatting.GRAY + "]: " + EnumChatFormatting.GRAY + string));
     }
 
-    private static ArrayList<String> messages = new ArrayList<>();
+    private static final ArrayList<String> messages = new ArrayList<>();
     public static void tellPlayerIrc(String string) {
         messages.add(string);
         if (string != null && mc.thePlayer != null) {
@@ -473,9 +472,9 @@ public class PlayerUtils {
     }
 
     public void portMove(float yaw, float multiplyer, float up) {
-        double moveX = -Math.sin(Math.toRadians((double) yaw)) * (double) multiplyer;
-        double moveZ = Math.cos(Math.toRadians((double) yaw)) * (double) multiplyer;
-        double moveY = (double) up;
+        double moveX = -Math.sin(Math.toRadians(yaw)) * (double) multiplyer;
+        double moveZ = Math.cos(Math.toRadians(yaw)) * (double) multiplyer;
+        double moveY = up;
         mc.thePlayer.setPosition(moveX + mc.thePlayer.posX, moveY + mc.thePlayer.posY,
                 moveZ + mc.thePlayer.posZ);
     }

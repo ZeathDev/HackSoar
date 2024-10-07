@@ -3,7 +3,7 @@ package dev.hacksoar.manages.component.impl;
 import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.EventPreMotion;
 import dev.hacksoar.manages.component.Component;
-import dev.hacksoar.utils.player.StopWatch;
+import dev.hacksoar.utils.timer.StopWatch;
 
 /**
  * @author: Liycxc
@@ -32,5 +32,5 @@ public class SmoothCameraComponent extends Component {
         }
         mc.thePlayer.cameraYaw = 0;
         mc.thePlayer.cameraPitch = 0;
-    };
+    }
 }

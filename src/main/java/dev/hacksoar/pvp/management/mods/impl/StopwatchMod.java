@@ -7,16 +7,16 @@ import dev.hacksoar.api.events.impl.EventRender2D;
 import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.api.events.impl.EventTick;
 import dev.hacksoar.pvp.management.mods.HudMod;
-import dev.hacksoar.utils.TimerUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 
 import java.text.DecimalFormat;
 
 public class StopwatchMod extends HudMod {
 
-	private TimerUtils timer = new TimerUtils();
+	private final TimerUtils timer = new TimerUtils();
 	private int pressCount;
 	private float currentTime;
-	private DecimalFormat timeFormat = new DecimalFormat("0.00");
+	private final DecimalFormat timeFormat = new DecimalFormat("0.00");
 	
 	public StopwatchMod() {
 		super("Stopwatch", "Measure the time");

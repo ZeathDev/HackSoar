@@ -1,7 +1,7 @@
 package dev.hacksoar.utils.shader;
 
-import dev.hacksoar.utils.GlUtils;
-import dev.hacksoar.utils.MathUtils;
+import dev.hacksoar.utils.math.MathUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -20,7 +20,7 @@ public class ShadowUtils {
 
     public static Framebuffer framebuffer = new Framebuffer(1, 1, false);
 
-    private static Minecraft mc = Minecraft.getMinecraft();
+    private static final Minecraft mc = Minecraft.getMinecraft();
 
     public static void renderShadow(int sourceTexture, int radius, int offset) {
         framebuffer = GlUtils.createFrameBuffer(framebuffer);

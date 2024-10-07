@@ -1,8 +1,8 @@
 package dev.hacksoar.modules;
 
 import dev.hacksoar.HackSoar;
-import dev.hacksoar.utils.PlayerUtils;
 import dev.hacksoar.utils.irc.ServerUtils;
+import dev.hacksoar.utils.player.PlayerUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ModuleCommand {
     @Getter
-    private static String prefix = ".";
+    private static final String prefix = ".";
     private static final ArrayList<String> commands = new ArrayList<>();
 
     public ModuleCommand() {

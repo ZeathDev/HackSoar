@@ -8,7 +8,7 @@ import dev.hacksoar.api.value.impl.IntValue;
 import dev.hacksoar.api.value.impl.ListValue;
 import dev.hacksoar.modules.Module;
 import dev.hacksoar.modules.ModuleCategory;
-import dev.hacksoar.utils.TimerUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.ItemSword;
 
@@ -18,16 +18,16 @@ public class AutoClick extends Module {
         super("AutoClick","Mouse down auto click", ModuleCategory.Combat);
     }
     
-    private IntValue aCps = new IntValue("A CPS",8,1,20);
-    private IntValue bCps = new IntValue("B CPS",8,1,20);
-    private BoolValue leftClick = new BoolValue("Left Click",true);
-    private ListValue autoBlock = new ListValue("AutoBlock",new String[]{"None", "Legit", "Fast"},"None",() -> leftClick.get());
-    private IntValue autoblockDelay = new IntValue("AutoBlock Delay",120,100,300,() -> leftClick.get() && autoBlock.get().equals("Legit"));
+    private final IntValue aCps = new IntValue("A CPS",8,1,20);
+    private final IntValue bCps = new IntValue("B CPS",8,1,20);
+    private final BoolValue leftClick = new BoolValue("Left Click",true);
+    private final ListValue autoBlock = new ListValue("AutoBlock",new String[]{"None", "Legit", "Fast"},"None",() -> leftClick.get());
+    private final IntValue autoblockDelay = new IntValue("AutoBlock Delay",120,100,300,() -> leftClick.get() && autoBlock.get().equals("Legit"));
 
     private long leftDelay = TimerUtils.randomClickDelay(minCps(),maxCps());
     private long leftLastSwing = 0L;
 
-    private TimerUtils timeHelper = new TimerUtils();
+    private final TimerUtils timeHelper = new TimerUtils();
     
     @EventTarget
     public void onTick(EventTick tick) {

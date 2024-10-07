@@ -6,9 +6,9 @@ import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.api.events.impl.EventUpdate;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.TimerUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.render.RoundedUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import org.lwjgl.input.Mouse;
 
 public class MouseDisplayMod extends Mod {
@@ -18,10 +18,10 @@ public class MouseDisplayMod extends Mod {
 	private float lastX;
 	private float lastY;
 	
-	private TimerUtils timer = new TimerUtils();
+	private final TimerUtils timer = new TimerUtils();
 	
-	private SimpleAnimation yawAnimation = new SimpleAnimation(0.0F);
-	private SimpleAnimation pitchAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation yawAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation pitchAnimation = new SimpleAnimation(0.0F);
 	
 	public MouseDisplayMod() {
 		super("Mouse Display", "Display mouse movement", ModCategory.HUD);

@@ -7,12 +7,12 @@ import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
 import dev.hacksoar.pvp.management.music.Music;
-import dev.hacksoar.utils.TimerUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.render.RenderUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
 
@@ -21,8 +21,8 @@ public class MusicInfoMod extends Mod {
 	public static MusicInfoMod instance = new MusicInfoMod();
 	
 	public float addX = 0;
-	private TimerUtils timer = new TimerUtils();
-	private TimerUtils timer2 = new TimerUtils();
+	private final TimerUtils timer = new TimerUtils();
+	private final TimerUtils timer2 = new TimerUtils();
 	private boolean back = false;
 	
 	public static float[] visualizer = {

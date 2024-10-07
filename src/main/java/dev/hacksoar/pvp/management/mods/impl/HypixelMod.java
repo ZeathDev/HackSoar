@@ -5,8 +5,8 @@ import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.*;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.TimerUtils;
 import dev.hacksoar.utils.server.ServerUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import net.minecraft.item.Item;
 import net.minecraft.network.play.client.C01PacketChatMessage;
 import net.minecraft.network.play.client.C0EPacketClickWindow;
@@ -14,13 +14,13 @@ import net.minecraft.network.play.server.S02PacketChat;
 
 public class HypixelMod extends Mod {
 
-	private TimerUtils timer = new TimerUtils();
+	private final TimerUtils timer = new TimerUtils();
 	
     public String playCommand = "";
     
     private boolean autoplay = false, autogg = false, loaded = false;
     
-    private TimerUtils tipTimer = new TimerUtils();
+    private final TimerUtils tipTimer = new TimerUtils();
     
 	public HypixelMod() {
 		super("Hypixel", "Hypixel with useful mods", ModCategory.PLAYER);
@@ -66,18 +66,18 @@ public class HypixelMod extends Mod {
 
 		if(ServerUtils.isHypixel()) {
 			if(HackSoar.instance.settingsManager.getSettingByName(this, "Auto GG").getValBoolean()) {
-				if(this.autogg == true) {
+				if(this.autogg) {
 					mc.thePlayer.sendChatMessage("/achat gg");
 					this.autogg = false;
 				}
 			}
 			
 			if(HackSoar.instance.settingsManager.getSettingByName(this, "Auto Play").getValBoolean()) {
-				if(this.autoplay == true) {
+				if(this.autoplay) {
 					if(!loaded) {
 						loaded = true;
 					}
-					if(timer.delay(1000 * delay)) {
+					if(timer.delay(1000L * delay)) {
 						mc.thePlayer.sendChatMessage(playCommand);
 						timer.reset();
 						this.autoplay = false;

@@ -5,7 +5,6 @@ import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.pvp.management.quickplay.QuickPlay;
 import dev.hacksoar.pvp.management.quickplay.QuickPlayCommand;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.normal.Animation;
 import dev.hacksoar.utils.animation.normal.Direction;
 import dev.hacksoar.utils.animation.normal.impl.EaseBackIn;
@@ -15,6 +14,7 @@ import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
 import dev.hacksoar.utils.render.ClickEffect;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
 import net.minecraft.client.gui.GuiScreen;
@@ -40,12 +40,12 @@ public class GuiQuickPlay extends GuiScreen{
 	private QuickPlay selectedGame;
 	
 	private double scrollY;
-	private SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation scrollAnimation = new SimpleAnimation(0.0F);
 	
 	private double mainScrollY;
-	private SimpleAnimation mainScrollAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation mainScrollAnimation = new SimpleAnimation(0.0F);
 	
-    private List<ClickEffect> clickEffects = new ArrayList<>();
+    private final List<ClickEffect> clickEffects = new ArrayList<>();
     
 	@Override
 	public void initGui() {

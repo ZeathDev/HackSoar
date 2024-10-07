@@ -3,8 +3,6 @@ package dev.hacksoar.pvp;
 import dev.hacksoar.HackSoar;
 import dev.hacksoar.pvp.management.account.Account;
 import dev.hacksoar.pvp.management.account.AccountType;
-import dev.hacksoar.utils.GlUtils;
-import dev.hacksoar.utils.TimerUtils;
 import dev.hacksoar.utils.animation.normal.Animation;
 import dev.hacksoar.utils.animation.normal.Direction;
 import dev.hacksoar.utils.animation.normal.impl.EaseBackIn;
@@ -12,7 +10,9 @@ import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
@@ -29,15 +29,15 @@ import java.util.Random;
 
 public class GuiPleaseLogin extends GuiScreen{
 
-	private GuiScreen prevGuiScreen;
+	private final GuiScreen prevGuiScreen;
 	
 	private Animation introAnimation;
     private GuiTransparentField usernameField;
     
-	private SimpleAnimation clickAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation clickAnimation = new SimpleAnimation(0.0F);
 	private boolean click;
-	private TimerUtils clickTimer = new TimerUtils();
-    private SimpleAnimation selectAnimation = new SimpleAnimation(0.0F);
+	private final TimerUtils clickTimer = new TimerUtils();
+    private final SimpleAnimation selectAnimation = new SimpleAnimation(0.0F);
     private boolean close;
     
     public GuiPleaseLogin(GuiScreen prevGuiScreen) {

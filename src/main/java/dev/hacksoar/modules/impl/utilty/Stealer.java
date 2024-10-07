@@ -7,9 +7,9 @@ import dev.hacksoar.api.value.impl.BoolValue;
 import dev.hacksoar.api.value.impl.IntValue;
 import dev.hacksoar.modules.Module;
 import dev.hacksoar.modules.ModuleCategory;
-import dev.hacksoar.utils.MathUtils;
 import dev.hacksoar.utils.invs.ItemUtil;
-import dev.hacksoar.utils.player.StopWatch;
+import dev.hacksoar.utils.math.MathUtils;
+import dev.hacksoar.utils.timer.StopWatch;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.item.ItemStack;
@@ -70,5 +70,5 @@ public class Stealer extends Module {
             this.lastClick = 0;
             this.lastSteal = 0;
         }
-    };
+    }
 }

@@ -2,9 +2,9 @@ package dev.hacksoar.modules;
 
 import dev.hacksoar.HackSoar;
 import dev.hacksoar.api.value.Value;
-import dev.hacksoar.utils.PlayerUtils;
-import dev.hacksoar.utils.TimerUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
+import dev.hacksoar.utils.player.PlayerUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;

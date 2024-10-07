@@ -4,19 +4,19 @@ import dev.hacksoar.pvp.clickgui.category.impl.FeatureCategory;
 import dev.hacksoar.pvp.clickgui.comp.Comp;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.settings.Setting;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 
 import java.awt.*;
 
 public class CompCheckBox extends Comp {
 
-	private SimpleAnimation animation = new SimpleAnimation(0.0F);
-	private SimpleAnimation animation2 = new SimpleAnimation(0.0F);
+	private final SimpleAnimation animation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation animation2 = new SimpleAnimation(0.0F);
 	
     public CompCheckBox(float x, float y, FeatureCategory parent, Mod mod, Setting setting) {
         this.x = x;
@@ -32,10 +32,10 @@ public class CompCheckBox extends Comp {
     	animation.setAnimation(setting.getValBoolean() ? 1 : 0, 10);
     	animation2.setAnimation(setting.getValBoolean() ? 255 : 0, 12);
     	
-    	RoundedUtils.drawRound((float) (parent.getX() + x - 70), (float) (parent.getY() + y), 10, 10, 3, ColorUtils.getBackgroundColor(2));
+    	RoundedUtils.drawRound(parent.getX() + x - 70, parent.getY() + y, 10, 10, 3, ColorUtils.getBackgroundColor(2));
     	
-    	GlUtils.startScale((float) (parent.getX() + x - 70 + parent.getX() + x - 70 + 10) / 2, (float) (parent.getY() + y + parent.getY() + y + 10) / 2, animation.getValue());
-    	RoundedUtils.drawRound((float) (parent.getX() + x - 70), (float) (parent.getY() + y), 10, 10, 3, ColorUtils.getClientColor(0, (int) animation2.getValue()));
+    	GlUtils.startScale((parent.getX() + x - 70 + parent.getX() + x - 70 + 10) / 2, (parent.getY() + y + parent.getY() + y + 10) / 2, animation.getValue());
+    	RoundedUtils.drawRound(parent.getX() + x - 70, parent.getY() + y, 10, 10, 3, ColorUtils.getClientColor(0, (int) animation2.getValue()));
     	FontUtils.icon20.drawString("H", (parent.getX() + x - 70), (parent.getY() + y + 3), new Color(255, 255, 255).getRGB());
     	GlUtils.stopScale();
     	

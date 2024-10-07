@@ -1,4 +1,4 @@
-package dev.hacksoar.utils;
+package dev.hacksoar.utils.render;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class SkinUtils {
 
-	private static Gson GSON = new Gson();
+	private static final Gson GSON = new Gson();
 	
     public static void loadSkin(Minecraft mc, String name, UUID uuid) {
         loadSkin(mc, name, uuid, new File(new File(mc.mcDataDir, "soar/cachedImages/models"), name + ".png"), new File(new File(mc.mcDataDir, "soar/cachedImages/faces"), name + ".png"));
@@ -34,12 +34,12 @@ public class SkinUtils {
                 modelF.getParentFile().mkdirs();
                 if (uuid == null) {
                     try (final InputStreamReader isr = new InputStreamReader(new URL("https://api.mojang.com/users/profiles/minecraft/" + username).openStream(), StandardCharsets.UTF_8)) {
-                        uuid = UUIDTypeAdapter.fromString(((JsonObject)GSON.fromJson((Reader)isr, (Class<?>)JsonObject.class)).get("id").getAsString());
+                        uuid = UUIDTypeAdapter.fromString(((JsonObject)GSON.fromJson(isr, (Class<?>)JsonObject.class)).get("id").getAsString());
                     }
                 }
                 String base64Data;
                 try (final InputStreamReader isr2 = new InputStreamReader(new URL("https://sessionserver.mojang.com/session/minecraft/profile/" + UUIDTypeAdapter.fromUUID(uuid)).openStream(), StandardCharsets.UTF_8)) {
-                    base64Data = ((JsonObject)GSON.fromJson((Reader)isr2, (Class<?>)JsonObject.class)).getAsJsonArray("properties").get(0).getAsJsonObject().get("value").getAsString();
+                    base64Data = ((JsonObject)GSON.fromJson(isr2, (Class<?>)JsonObject.class)).getAsJsonArray("properties").get(0).getAsJsonObject().get("value").getAsString();
                 }
                 final JsonObject jo = ((JsonObject)GSON.fromJson(new String(Base64.getDecoder().decode(base64Data), StandardCharsets.UTF_8), (Class<?>)JsonObject.class)).getAsJsonObject("textures").getAsJsonObject("SKIN");
                 if (jo.has("metadata") && jo.getAsJsonObject("metadata").has("model") && jo.getAsJsonObject("metadata").get("model").getAsString().equalsIgnoreCase("slim")) {

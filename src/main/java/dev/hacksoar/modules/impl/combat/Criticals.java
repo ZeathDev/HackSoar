@@ -7,7 +7,7 @@ import dev.hacksoar.api.tags.ModuleTag;
 import dev.hacksoar.api.value.impl.ListValue;
 import dev.hacksoar.modules.Module;
 import dev.hacksoar.modules.ModuleCategory;
-import dev.hacksoar.utils.MathUtils;
+import dev.hacksoar.utils.math.MathUtils;
 import dev.hacksoar.utils.player.PacketUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

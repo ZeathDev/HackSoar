@@ -3,8 +3,8 @@ package net.minecraft.client.gui;
 import com.google.common.collect.Lists;
 import dev.hacksoar.HackSoar;
 import dev.hacksoar.pvp.management.mods.impl.ChatMod;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
+import dev.hacksoar.utils.render.GlUtils;
 import net.minecraft.network.play.client.C14PacketTabComplete;
 import net.minecraft.util.*;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +28,7 @@ public class GuiChat extends GuiScreen {
     private boolean playerNamesFound;
     private boolean waitingOnAutocomplete;
     private int autocompleteIndex;
-    private List<String> foundPlayerNames = Lists.<String>newArrayList();
+    private final List<String> foundPlayerNames = Lists.newArrayList();
 
     /** Chat entry field */
     protected GuiTextField inputField;
@@ -38,7 +38,7 @@ public class GuiChat extends GuiScreen {
      */
     private String defaultInputFieldText = "";
 
-    private SimpleAnimation animation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation animation = new SimpleAnimation(0.0F);
 
     public GuiChat() {
     }
@@ -92,7 +92,7 @@ public class GuiChat extends GuiScreen {
         }
 
         if (keyCode == 1) {
-            this.mc.displayGuiScreen((GuiScreen)null);
+            this.mc.displayGuiScreen(null);
         }
         else if (keyCode != 28 && keyCode != 156) {
             if (keyCode == 200) {
@@ -118,7 +118,7 @@ public class GuiChat extends GuiScreen {
                 this.sendChatMessage(s);
             }
 
-            this.mc.displayGuiScreen((GuiScreen)null);
+            this.mc.displayGuiScreen(null);
         }
     }
 
@@ -212,7 +212,7 @@ public class GuiChat extends GuiScreen {
             this.mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(new ChatComponentText(stringbuilder.toString()), 1);
         }
 
-        this.inputField.writeText((String)this.foundPlayerNames.get(this.autocompleteIndex++));
+        this.inputField.writeText(this.foundPlayerNames.get(this.autocompleteIndex++));
     }
 
     private void sendAutocompleteRequest(String p_146405_1_, String p_146405_2_) {
@@ -247,7 +247,7 @@ public class GuiChat extends GuiScreen {
                     this.historyBuffer = this.inputField.getText();
                 }
 
-                this.inputField.setText((String)this.mc.ingameGUI.getChatGUI().getSentMessages().get(i));
+                this.inputField.setText(this.mc.ingameGUI.getChatGUI().getSentMessages().get(i));
                 this.sentHistoryCursor = i;
             }
         }

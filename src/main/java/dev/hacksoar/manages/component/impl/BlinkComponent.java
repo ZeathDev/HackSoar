@@ -6,7 +6,7 @@ import dev.hacksoar.api.events.impl.EventSendPacket;
 import dev.hacksoar.api.events.impl.EventServerJoin;
 import dev.hacksoar.manages.component.Component;
 import dev.hacksoar.utils.player.PacketUtil;
-import dev.hacksoar.utils.player.StopWatch;
+import dev.hacksoar.utils.timer.StopWatch;
 import net.minecraft.network.Packet;
 import net.minecraft.network.handshake.client.C00Handshake;
 import net.minecraft.network.login.client.C00PacketLoginStart;
@@ -72,7 +72,7 @@ public class BlinkComponent extends Component {
             packets.clear();
             dispatch = false;
         }
-    };
+    }
 
     public static void dispatch() {
         dispatch = true;
@@ -82,11 +82,11 @@ public class BlinkComponent extends Component {
     public void onWorldChange (EventLoadWorld event) {
         packets.clear();
         BlinkComponent.blinking = false;
-    };
+    }
 
     @EventTarget
     public void onServerJoin (EventServerJoin event) {
         packets.clear();
         BlinkComponent.blinking = false;
-    };
+    }
 }

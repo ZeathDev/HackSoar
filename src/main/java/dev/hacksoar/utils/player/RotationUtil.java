@@ -1,7 +1,7 @@
 package dev.hacksoar.utils.player;
 
 import dev.hacksoar.HackSoar;
-import dev.hacksoar.utils.MathConst;
+import dev.hacksoar.utils.math.MathConst;
 import dev.hacksoar.utils.vector.Vector2f;
 import dev.hacksoar.utils.vector.Vector3d;
 import lombok.experimental.UtilityClass;

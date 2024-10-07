@@ -10,7 +10,6 @@ import dev.hacksoar.pvp.clickgui.comp.impl.CompSlider;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
 import dev.hacksoar.pvp.management.settings.Setting;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.normal.Animation;
 import dev.hacksoar.utils.animation.normal.Direction;
 import dev.hacksoar.utils.animation.normal.impl.EaseInOutQuad;
@@ -18,6 +17,7 @@ import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -33,7 +33,7 @@ public class FeatureCategory extends Category {
 	public static Animation openSettingAnimation;
 
 	private boolean canToggle;
-	private ArrayList<Comp> comps = new ArrayList<>();
+	private final ArrayList<Comp> comps = new ArrayList<>();
 	public int modeIndex;
 
 	public FeatureCategory(String name) {
@@ -64,7 +64,7 @@ public class FeatureCategory extends Category {
 		for(Mod m : HackSoar.instance.modManager.getMods()) {
 
 			if(!m.isHide() && !m.getCategory().equals(ModCategory.HACK)) {
-				if(clickGUI.searchMode ? (StringUtils.containsIgnoreCase(m.getName(), clickGUI.searchWord.getText()) || StringUtils.containsIgnoreCase(m.getDescription(), clickGUI.searchWord.getText())) : true) {
+				if(!clickGUI.searchMode || (StringUtils.containsIgnoreCase(m.getName(), clickGUI.searchWord.getText()) || StringUtils.containsIgnoreCase(m.getDescription(), clickGUI.searchWord.getText()))) {
 					RoundedUtils.drawRound(this.getX() + 95, this.getY() + offset + scrollAnimation.getValue(), 200, 26, 6, ColorUtils.getBackgroundColor(4));
 					FontUtils.regular20.drawString(m.getName(), this.getX() + 105, this.getY() + 10.5F + offset + scrollAnimation.getValue(), ColorUtils.getFontColor(2).getRGB());
 
@@ -95,7 +95,7 @@ public class FeatureCategory extends Category {
 
 		final MouseUtils.Scroll scroll = MouseUtils.scroll();
 
-		if(scroll != null && openModSetting == false) {
+		if(scroll != null && !openModSetting) {
 			switch (scroll) {
 				case DOWN:
 					if(scrollY > -((modIndex - 6.5) * 35)) {
@@ -133,7 +133,7 @@ public class FeatureCategory extends Category {
 			}
 
 			if(openSettingAnimation.isDone(Direction.BACKWARDS)) {
-				if(openModSetting == true) {
+				if(openModSetting) {
 					openModSetting = false;
 					comps.clear();
 				}
@@ -142,11 +142,7 @@ public class FeatureCategory extends Category {
 			GlUtils.stopTranslate();
 		}
 
-		if(MouseUtils.isInside(mouseX, mouseY, this.getX(), this.getY(), this.getWidth(), this.getHeight())) {
-			canToggle = true;
-		}else{
-			canToggle = false;
-		}
+        canToggle = MouseUtils.isInside(mouseX, mouseY, this.getX(), this.getY(), this.getWidth(), this.getHeight());
 
 		StencilUtils.uninitStencilBuffer();
 	}
@@ -159,7 +155,7 @@ public class FeatureCategory extends Category {
 
 		for(Mod m : HackSoar.instance.modManager.getMods()) {
 			if(!m.isHide() && !m.getCategory().equals(ModCategory.HACK)) {
-				if(clickGUI.searchMode ? (StringUtils.containsIgnoreCase(m.getName(), clickGUI.searchWord.getText()) || StringUtils.containsIgnoreCase(m.getDescription(), clickGUI.searchWord.getText())) : true) {
+				if(!clickGUI.searchMode || (StringUtils.containsIgnoreCase(m.getName(), clickGUI.searchWord.getText()) || StringUtils.containsIgnoreCase(m.getDescription(), clickGUI.searchWord.getText()))) {
 
 					if(MouseUtils.isInside(mouseX, mouseY, this.getX() + 270, this.getY() + offset + scrollAnimation.getValue(), 26, 26) && canToggle && !openModSetting) {
 						if (mouseButton == 0) {

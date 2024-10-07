@@ -8,7 +8,7 @@ import dev.hacksoar.api.events.impl.EventTick;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
 import dev.hacksoar.utils.LocationUtils;
-import dev.hacksoar.utils.MathUtils;
+import dev.hacksoar.utils.math.MathUtils;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumChatFormatting;
@@ -21,8 +21,8 @@ import java.util.Random;
 
 public class DamageParticleMod extends Mod {
 
-	private HashMap<EntityLivingBase, Float> healthMap = new HashMap<>();
-	private List<Particle> particles = new ArrayList<>();
+	private final HashMap<EntityLivingBase, Float> healthMap = new HashMap<>();
+	private final List<Particle> particles = new ArrayList<>();
 	private boolean canRemove;
 	private Particle removeParticle;
 	

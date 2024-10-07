@@ -50,6 +50,8 @@ public class ModuleManager {
         moduleList.add(new StrafeFix());
         moduleList.add(new WTap());
         moduleList.add(new Boost());
+        moduleList.add(new NoWeb());
+        moduleList.add(new Crasher());
 
         // Render
         moduleList.add(new Chams());

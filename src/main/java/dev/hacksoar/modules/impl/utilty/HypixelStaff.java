@@ -6,7 +6,7 @@ import dev.hacksoar.api.events.impl.EventReceivePacket;
 import dev.hacksoar.api.tags.ModuleTag;
 import dev.hacksoar.modules.Module;
 import dev.hacksoar.modules.ModuleCategory;
-import dev.hacksoar.utils.PlayerUtils;
+import dev.hacksoar.utils.player.PlayerUtils;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.network.play.server.S3EPacketTeams;

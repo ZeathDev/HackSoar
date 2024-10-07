@@ -3,7 +3,6 @@ package dev.hacksoar.utils.player;
 import dev.hacksoar.HackSoar;
 import dev.hacksoar.api.events.impl.EventMove;
 import dev.hacksoar.api.events.impl.EventMoveInput;
-import dev.hacksoar.utils.PlayerUtils;
 import dev.hacksoar.utils.vector.Vector2d;
 import lombok.experimental.UtilityClass;
 import net.minecraft.client.settings.KeyBinding;

@@ -1,6 +1,6 @@
 package dev.hacksoar.utils.server;
 
-import dev.hacksoar.utils.RandomUtils;
+import dev.hacksoar.utils.math.RandomUtils;
 import net.hypixel.api.HypixelAPI;
 import net.minecraft.util.EnumChatFormatting;
 

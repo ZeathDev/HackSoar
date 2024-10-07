@@ -7,7 +7,7 @@ import dev.hacksoar.api.value.impl.BoolValue;
 import dev.hacksoar.api.value.impl.IntValue;
 import dev.hacksoar.modules.Module;
 import dev.hacksoar.modules.ModuleCategory;
-import dev.hacksoar.utils.TimerUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 
 @ModuleTag
 public class MemoryFix extends Module {

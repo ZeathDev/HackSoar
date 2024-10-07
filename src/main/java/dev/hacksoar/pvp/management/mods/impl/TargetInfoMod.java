@@ -6,7 +6,6 @@ import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.pvp.GuiEditHUD;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.TargetUtils;
 import dev.hacksoar.utils.animation.normal.Animation;
 import dev.hacksoar.utils.animation.normal.Direction;
@@ -14,6 +13,7 @@ import dev.hacksoar.utils.animation.normal.impl.EaseBackIn;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RenderUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
@@ -30,9 +30,9 @@ public class TargetInfoMod extends Mod {
     private Animation introAnimation;
     private ResourceLocation resourceLocation;
     private boolean loaded;
-    private SimpleAnimation animation = new SimpleAnimation(0.0F);
-    private SimpleAnimation damageAnimation = new SimpleAnimation(0.0F);
-    private SimpleAnimation redAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation animation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation damageAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation redAnimation = new SimpleAnimation(0.0F);
     
 	public TargetInfoMod() {
 		super("Target Info", "Render target infomation", ModCategory.HUD);

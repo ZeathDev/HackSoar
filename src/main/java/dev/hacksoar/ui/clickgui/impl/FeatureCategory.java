@@ -15,7 +15,6 @@ import dev.hacksoar.ui.clickgui.comp.impl.CompBoolean;
 import dev.hacksoar.ui.clickgui.comp.impl.CompFloat;
 import dev.hacksoar.ui.clickgui.comp.impl.CompInt;
 import dev.hacksoar.ui.clickgui.comp.impl.CompList;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.normal.Animation;
 import dev.hacksoar.utils.animation.normal.Direction;
 import dev.hacksoar.utils.animation.normal.impl.EaseInOutQuad;
@@ -23,6 +22,7 @@ import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -75,7 +75,7 @@ public class FeatureCategory extends Category {
                     continue;
                 }
             }
-            if(clickGUI.searchMode ? (StringUtils.containsIgnoreCase(m.moduleName, clickGUI.searchWord.getText())) : true) {
+            if(!clickGUI.searchMode || (StringUtils.containsIgnoreCase(m.moduleName, clickGUI.searchWord.getText()))) {
                 RoundedUtils.drawRound(this.getX() + 95, this.getY() + offset + scrollAnimation.getValue(), 200, 26, 6, ColorUtils.getBackgroundColor(4));
                 FontUtils.regular20.drawString(m.moduleName, this.getX() + 105, this.getY() + 10.5F + offset + scrollAnimation.getValue(), ColorUtils.getFontColor(2).getRGB());
 
@@ -109,7 +109,7 @@ public class FeatureCategory extends Category {
 
         if(openSettingAnimation != null && selectedMod != null) {
             valueIndex = 0;
-            GlUtils.startTranslate(openModSetting ? (float) -openSettingAnimation.getValue() + 220 : 220, 0 + (float) scrollVAnimation.getValue());
+            GlUtils.startTranslate(openModSetting ? (float) -openSettingAnimation.getValue() + 220 : 220, 0 + scrollVAnimation.getValue());
 
             for (Comp comp : comps) {
                 // comp.drawScreen(mouseX, mouseY);
@@ -139,11 +139,7 @@ public class FeatureCategory extends Category {
             GlUtils.stopTranslate();
         }
 
-        if(MouseUtils.isInside(mouseX, mouseY, this.getX(), this.getY(), this.getWidth(), this.getHeight())) {
-            canToggle = true;
-        }else{
-            canToggle = false;
-        }
+        canToggle = MouseUtils.isInside(mouseX, mouseY, this.getX(), this.getY(), this.getWidth(), this.getHeight());
 
         final MouseUtils.Scroll scroll = MouseUtils.scroll();
 
@@ -215,7 +211,7 @@ public class FeatureCategory extends Category {
                     continue;
                 }
             }
-            if(clickGUI.searchMode ? (StringUtils.containsIgnoreCase(m.moduleName, clickGUI.searchWord.getText())) : true) {
+            if(!clickGUI.searchMode || (StringUtils.containsIgnoreCase(m.moduleName, clickGUI.searchWord.getText()))) {
 
                 if(MouseUtils.isInside(mouseX, mouseY, this.getX() + 270, this.getY() + offset + scrollAnimation.getValue(), 26, 26) && canToggle && !openModSetting) {
                     if (mouseButton == 0) {

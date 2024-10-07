@@ -4,10 +4,10 @@ import dev.hacksoar.HackSoar;
 import dev.hacksoar.pvp.management.colors.AccentColor;
 import dev.hacksoar.pvp.management.mods.impl.ClientMod;
 import dev.hacksoar.pvp.management.mods.impl.HUDMod;
-import dev.hacksoar.utils.MathUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.impl.ChristmasColorUtils;
 import dev.hacksoar.utils.color.impl.HalloweenColorUtils;
+import dev.hacksoar.utils.math.MathUtils;
 import net.minecraft.client.renderer.GlStateManager;
 
 import java.awt.*;

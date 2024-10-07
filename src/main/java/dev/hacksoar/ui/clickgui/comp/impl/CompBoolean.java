@@ -10,19 +10,19 @@ import dev.hacksoar.ui.clickgui.impl.features.CombatModules;
 import dev.hacksoar.ui.clickgui.impl.features.MovementModules;
 import dev.hacksoar.ui.clickgui.impl.features.RenderModules;
 import dev.hacksoar.ui.clickgui.impl.features.UtiltyModules;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 
 import java.awt.*;
 
 public class CompBoolean extends Comp {
 
-	private SimpleAnimation animation = new SimpleAnimation(0.0F);
-	private SimpleAnimation animation2 = new SimpleAnimation(0.0F);
+	private final SimpleAnimation animation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation animation2 = new SimpleAnimation(0.0F);
 	
     public CompBoolean(double x, double y, FeatureCategory parent, Module mod, BoolValue setting) {
         this.x = x;

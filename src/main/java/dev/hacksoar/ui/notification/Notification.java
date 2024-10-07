@@ -3,7 +3,7 @@ package dev.hacksoar.ui.notification;
 import dev.hacksoar.HackSoar;
 import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.EventRenderShadow;
-import dev.hacksoar.utils.TimerUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import dev.hacksoar.utils.animation.normal.Animation;
 import dev.hacksoar.utils.animation.normal.Direction;
 import dev.hacksoar.utils.animation.normal.impl.DecelerateAnimation;

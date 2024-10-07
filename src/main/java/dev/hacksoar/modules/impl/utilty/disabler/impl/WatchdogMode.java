@@ -5,7 +5,7 @@ import dev.hacksoar.api.events.impl.EventPreUpdate;
 import dev.hacksoar.api.tags.ModuleTag;
 import dev.hacksoar.api.value.impl.BoolValue;
 import dev.hacksoar.modules.impl.utilty.disabler.DisablerMode;
-import dev.hacksoar.utils.PlayerUtils;
+import dev.hacksoar.utils.player.PlayerUtils;
 
 @ModuleTag
 public class WatchdogMode extends DisablerMode {

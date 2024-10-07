@@ -7,7 +7,7 @@ import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.api.events.impl.EventRenderTick;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.TimerUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import dev.hacksoar.utils.render.RenderGlobalHelper;
 import dev.hacksoar.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
@@ -32,7 +32,7 @@ public class RearviewMod extends Mod {
 	private int mirrorDepth;
 	private long renderEndNanoTime;
 	private RenderGlobalHelper mirrorRenderGlobal;
-	private TimerUtils timer = new TimerUtils();
+	private final TimerUtils timer = new TimerUtils();
 	private boolean firstUpdate;
 	
 	public RearviewMod() {
@@ -73,7 +73,7 @@ public class RearviewMod extends Mod {
 		int fps = HackSoar.instance.settingsManager.getSettingByName(this, "FPS").getValInt();
 		
         if(mc.thePlayer != null && mc.thePlayer != null && Display.isActive()) {
-        	if (timer.delay((long) (1000 / fps))) {
+        	if (timer.delay(1000 / fps)) {
                 updateMirror();
                 timer.reset();
             }

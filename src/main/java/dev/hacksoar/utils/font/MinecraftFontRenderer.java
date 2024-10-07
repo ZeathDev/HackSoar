@@ -1,8 +1,8 @@
 package dev.hacksoar.utils.font;
 
 import dev.hacksoar.HackSoar;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.color.ColorUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;

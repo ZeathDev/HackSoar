@@ -11,11 +11,11 @@ import dev.hacksoar.api.value.impl.IntValue;
 import dev.hacksoar.manages.component.impl.SelectorDetectionComponent;
 import dev.hacksoar.modules.Module;
 import dev.hacksoar.modules.ModuleCategory;
-import dev.hacksoar.utils.MathUtils;
-import dev.hacksoar.utils.PlayerUtils;
 import dev.hacksoar.utils.invs.ItemUtil;
+import dev.hacksoar.utils.math.MathUtils;
 import dev.hacksoar.utils.player.PacketUtil;
-import dev.hacksoar.utils.player.StopWatch;
+import dev.hacksoar.utils.player.PlayerUtils;
+import dev.hacksoar.utils.timer.StopWatch;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.enchantment.Enchantment;
@@ -344,7 +344,7 @@ public class InvManager extends Module {
         if (this.canOpenInventory() && !this.moved) {
             this.closeInventory();
         }
-    };
+    }
 
     @EventTarget
     public void onAttack(EventAttackEntity entity){
@@ -493,7 +493,7 @@ public class InvManager extends Module {
         if (event.getPacket() instanceof C08PacketPlayerBlockPlacement) {
             this.placeTicks = 0;
         }
-    };
+    }
 
     private int getDelayMax() {
         return Math.max(delayA.get(),delayB.get());

@@ -11,7 +11,6 @@ import dev.hacksoar.pvp.clickgui.category.impl.FeatureCategory;
 import dev.hacksoar.pvp.clickgui.category.impl.MusicPlayerCategory;
 import dev.hacksoar.pvp.clickgui.category.impl.SettingsCategory;
 import dev.hacksoar.pvp.management.mods.Mod;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.normal.Animation;
 import dev.hacksoar.utils.animation.normal.Direction;
 import dev.hacksoar.utils.animation.normal.impl.EaseBackIn;
@@ -20,6 +19,7 @@ import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
 import dev.hacksoar.utils.mouse.MouseUtils;
 import dev.hacksoar.utils.render.ClickEffect;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
 import net.minecraft.client.gui.GuiScreen;
@@ -45,17 +45,17 @@ public class ClickGUI extends GuiScreen{
 
 	private float x, y, width, height, dragX, dragY;
 
-	private SimpleAnimation categoryAnimation = new SimpleAnimation(35F);
-	private SimpleAnimation categoryOpacity = new SimpleAnimation(0);
+	private final SimpleAnimation categoryAnimation = new SimpleAnimation(35F);
+	private final SimpleAnimation categoryOpacity = new SimpleAnimation(0);
 	private int currentCategoryY;
 
 	public SimpleAnimation searchAnimation = new SimpleAnimation(-30.0F);
 	public GuiSearchField searchWord;
 	public boolean searchMode;
 
-	private SimpleAnimation upAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation upAnimation = new SimpleAnimation(0.0F);
 
-	private List<ClickEffect> clickEffects = new ArrayList<>();
+	private final List<ClickEffect> clickEffects = new ArrayList<>();
 
 	public ClickGUI() {
 		loaded = false;
@@ -344,7 +344,7 @@ public class ClickGUI extends GuiScreen{
 			if(selectedCategory.equals(categoryManager.getCategoryByClass(FeatureCategory.class))) {
 				for(Mod m : HackSoar.instance.modManager.getMods()) {
 					if(!m.isHide()) {
-						if(this.searchMode ? (StringUtils.containsIgnoreCase(m.getName(), this.searchWord.getText()) || StringUtils.containsIgnoreCase(m.getDescription(), this.searchWord.getText())) : true) {
+						if(!this.searchMode || (StringUtils.containsIgnoreCase(m.getName(), this.searchWord.getText()) || StringUtils.containsIgnoreCase(m.getDescription(), this.searchWord.getText()))) {
 							boolean isSelect = MouseUtils.isInside(mouseX, mouseY, this.getX() + 95, this.getY() + offset + FeatureCategory.scrollAnimation.getValue(), 200, 26);
 							int opacity = 160;
 

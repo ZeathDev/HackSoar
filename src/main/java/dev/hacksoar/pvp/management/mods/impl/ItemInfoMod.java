@@ -5,7 +5,7 @@ import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.EventRenderSelectedItem;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.PlayerUtils;
+import dev.hacksoar.utils.player.PlayerUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.enchantment.EnchantmentHelper;

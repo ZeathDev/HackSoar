@@ -3,7 +3,7 @@ package dev.hacksoar.manages.component.impl;
 import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.EventReceivePacket;
 import dev.hacksoar.manages.component.Component;
-import dev.hacksoar.utils.PlayerUtils;
+import dev.hacksoar.utils.player.PlayerUtils;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S2DPacketOpenWindow;
 
@@ -22,7 +22,7 @@ public class InventoryDeSyncComponent extends Component {
                 active = false;
             }
         }
-    };
+    }
 
     public static void setActive(String command) {
         if (active || deSynced || mc.currentScreen != null) {

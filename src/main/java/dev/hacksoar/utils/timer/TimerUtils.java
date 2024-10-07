@@ -1,5 +1,11 @@
-package dev.hacksoar.utils;
+package dev.hacksoar.utils.timer;
 
+import dev.hacksoar.utils.math.RandomUtils;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class TimerUtils {
 	
     public long lastMs;
@@ -33,14 +39,6 @@ public class TimerUtils {
     public long getElapsedTime() {
         return System.currentTimeMillis() - this.lastMs;
     }
-
-	public long getLastMs() {
-		return lastMs;
-	}
-
-	public void setLastMs(long lastMs) {
-		this.lastMs = lastMs;
-	}
 
     public static long randomDelay(final int minDelay, final int maxDelay) {
         return RandomUtils.nextInt(minDelay, maxDelay);

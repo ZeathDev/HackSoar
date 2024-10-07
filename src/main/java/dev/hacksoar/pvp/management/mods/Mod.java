@@ -3,11 +3,11 @@ package dev.hacksoar.pvp.management.mods;
 import dev.hacksoar.HackSoar;
 import dev.hacksoar.pvp.management.mods.impl.HUDMod;
 import dev.hacksoar.pvp.management.settings.Setting;
-import dev.hacksoar.utils.TimerUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.render.OutlineUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
+import dev.hacksoar.utils.timer.TimerUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
@@ -20,7 +20,7 @@ public class Mod {
 	public FontRenderer fr = mc.fontRendererObj;
 	
 	private String name;
-	private String description;
+	private final String description;
 
 	private int x, y, draggingX, draggingY;
 	

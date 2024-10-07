@@ -1,4 +1,4 @@
-package dev.hacksoar.utils;
+package dev.hacksoar.utils.math;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

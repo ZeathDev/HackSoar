@@ -6,10 +6,10 @@ import dev.hacksoar.api.events.impl.EventRender2D;
 import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.GlUtils;
 import dev.hacksoar.utils.animation.simple.SimpleAnimation;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
+import dev.hacksoar.utils.render.GlUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import net.minecraft.client.gui.Gui;
 import org.lwjgl.input.Keyboard;
@@ -18,8 +18,16 @@ import java.awt.*;
 
 public class KeystrokesMod extends Mod {
 
-	private SimpleAnimation wAnimation = new SimpleAnimation(0.0F), aAnimation = new SimpleAnimation(0.0F), sAnimation = new SimpleAnimation(0.0F), dAnimation = new SimpleAnimation(0.0F), spaceAnimation = new SimpleAnimation(0.0F);
-	private SimpleAnimation wOpacityAnimation = new SimpleAnimation(0.0F), aOpacityAnimation = new SimpleAnimation(0.0F), sOpacityAnimation = new SimpleAnimation(0.0F), dOpacityAnimation = new SimpleAnimation(0.0F), spaceOpacityAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation wAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation aAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation sAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation dAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation spaceAnimation = new SimpleAnimation(0.0F);
+	private final SimpleAnimation wOpacityAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation aOpacityAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation sOpacityAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation dOpacityAnimation = new SimpleAnimation(0.0F);
+    private final SimpleAnimation spaceOpacityAnimation = new SimpleAnimation(0.0F);
 	
 	public KeystrokesMod() {
 		super("Keystrokes", "Display pressed keys", ModCategory.HUD);

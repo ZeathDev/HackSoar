@@ -4,7 +4,7 @@ import dev.hacksoar.api.events.EventTarget;
 import dev.hacksoar.api.events.impl.EventRender2D;
 import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.pvp.management.mods.HudMod;
-import dev.hacksoar.utils.PlayerUtils;
+import dev.hacksoar.utils.player.PlayerUtils;
 
 public class PotionCounterMod extends HudMod{
 

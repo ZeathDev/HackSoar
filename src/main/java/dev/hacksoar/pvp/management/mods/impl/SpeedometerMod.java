@@ -6,9 +6,9 @@ import dev.hacksoar.api.events.impl.EventRender2D;
 import dev.hacksoar.api.events.impl.EventRenderShadow;
 import dev.hacksoar.pvp.management.mods.Mod;
 import dev.hacksoar.pvp.management.mods.ModCategory;
-import dev.hacksoar.utils.PlayerUtils;
 import dev.hacksoar.utils.color.ColorUtils;
 import dev.hacksoar.utils.font.FontUtils;
+import dev.hacksoar.utils.player.PlayerUtils;
 import dev.hacksoar.utils.render.RenderUtils;
 import dev.hacksoar.utils.render.RoundedUtils;
 import dev.hacksoar.utils.render.StencilUtils;
@@ -19,8 +19,8 @@ import java.text.DecimalFormat;
 
 public class SpeedometerMod extends Mod {
 
-	private int speedCount = 200;
-	private double[] speeds = new double[speedCount];
+	private final int speedCount = 200;
+	private final double[] speeds = new double[speedCount];
 	private long lastUpdate;
 	private static final DecimalFormat speedFormat = new DecimalFormat("0.00");
 	
@@ -92,7 +92,7 @@ public class SpeedometerMod extends Mod {
 			this.setHeight(100);
 			
 		}else {
-			this.drawBackground(this.getX(), this.getY(), (float) (FontUtils.regular_bold20.getStringWidth(speedFormat.format(PlayerUtils.getSpeed()) + " m/s") + 9), (float) (FontUtils.regular20.getHeight() + 7.5F));
+			this.drawBackground(this.getX(), this.getY(), (float) (FontUtils.regular_bold20.getStringWidth(speedFormat.format(PlayerUtils.getSpeed()) + " m/s") + 9), FontUtils.regular20.getHeight() + 7.5F);
 			FontUtils.regular_bold20.drawString(speedFormat.format(PlayerUtils.getSpeed()) + " m/s", this.getX() + 4.5F, this.getY() + 4F, this.getFontColor().getRGB());
 			
 			this.setWidth((int) (FontUtils.regular_bold20.getStringWidth(speedFormat.format(PlayerUtils.getSpeed()) + " m/s") + 8F));
